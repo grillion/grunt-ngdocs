@@ -90,6 +90,7 @@
 </head>
 
 <body>
+
   <header class="header">
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -161,7 +162,6 @@
                    placeholder="search the docs" tabindex="1" accesskey="s">
           </div>
           <% } %>
-          <div class="spacer"></div>
 
           <ul class="nav nav-list well" ng-show="pages.length">
             <li ng-repeat="page in pages track by page.url" ng-class="navClass(page)" class="api-list-item expand">
