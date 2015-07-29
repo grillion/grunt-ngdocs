@@ -212,7 +212,7 @@ module.exports = function(grunt) {
           bestMatch: options.bestMatch,
           deferLoad: !!options.deferLoad
         },
-        template = options.template ? options.template : path.resolve(templates, 'index.tmpl');
+        template = options.template ? options.template : path.resolve(templates, 'index.tmpl.html');
 
     // create index.html
     content = grunt.file.read(template);
