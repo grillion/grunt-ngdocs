@@ -3,18 +3,6 @@ img.AngularJS-small {
   height: 25px;
 }
 
-/* this is here to avoid the display=block shuffling of ngShow */
-.breadcrumb li > * {
-  float:left;
-  margin:0 2px 0 0;
-}
-
-.breadcrumb {
-  padding-top: 6px;
-  padding-bottom: 0;
-  line-height: 18px
-}
-
 .navbar img {
   max-height: 40px;
   padding-right: 20px;
@@ -46,15 +34,6 @@ img.AngularJS-small {
 
 /* =============================== */
 
-.form-search {
-  margin-right: 10px;
-}
-
-.form-search .search-query {
-  width: 180px;
-  width: 200px \9;
-}
-
 .form-search .dropdown-menu {
   margin-left: 10px;
 }
@@ -70,6 +49,7 @@ img.AngularJS-small {
 
 .form-search > ul.nav > li > a {
   margin: 0;
+  padding: 3px 10px;
 }
 
 .form-search > ul.nav > li.module {
@@ -78,7 +58,7 @@ img.AngularJS-small {
 
 .form-search > ul.nav > li.section {
   background-color: #ebebeb;
-  min-height: 14px;
+  min-height: 25px;
 }
 
 .form-search > ul.nav > li.first {
@@ -114,12 +94,8 @@ img.AngularJS-small {
   background-color: inherit;
 }
 
-.form-search .well li {
-  line-height: 14px;
-}
-
 .form-search .well li a:focus {
-	outline: none;
+  outline: none;
 }
 
 .form-search .well .guide {
@@ -133,7 +109,7 @@ img.AngularJS-small {
 }
 
 .match > a, .nav > .match > a:hover {
-	background-color: #dbeaf4;
+  background-color: #dbeaf4;
 }
 
 /* =============================== */
@@ -292,8 +268,6 @@ ul.events > li > h3 {
 }
 
 .variables-matrix .type-hint {
-  text-align:center;
-  display:block;
   min-width:60px;
 }
 
@@ -319,4 +293,8 @@ ul.events > li > h3 {
 
 .type-hint-number {
   background:rgb(189, 63, 66);
+}
+
+.type-hint-promise {
+  background: rgb(102, 79, 189);
 }

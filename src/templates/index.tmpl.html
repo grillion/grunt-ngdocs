@@ -91,12 +91,12 @@
 
 <body>
   <header class="header">
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
           <% if (image) { %>
             <% if (imageLink) { %>
-              <a href="<%= imageLink %>">
+              <a class="navbar-brand" href="<%= imageLink %>">
             <% } %>
               <img class="pull-left" src="<%= image %>">
             <% if (imageLink) { %>
@@ -104,24 +104,24 @@
             <% } %>
           <% } %>
           <% if (title) {%>
-            <a <% if (titleLink) { %> href="<%= titleLink %>" <% } %> class="brand"><%= title %></a>
+            <a <% if (titleLink) { %> href="<%= titleLink %>" <% } %> class="navbar-brand"><%= title %></a>
           <% } %>
-          <ul class="nav">
-            <li ng-repeat="(url, name) in sections" ng-class="{active: isActivePath(url)}">
-              <a ng-href="{{url}}"><i class="icon-book icon-white"></i> {{name}}</a>
-            </li>
-          </ul>
-          <%= navContent %>
         </div>
+        <ul class="nav navbar-nav">
+          <li ng-repeat="(url, name) in sections" ng-class="{active: isActivePath(url)}">
+            <a ng-href="{{url}}"><i class="icon-book icon-white"></i> {{name}}</a>
+          </li>
+        </ul>
+        <%= navContent %>
       </div>
-    </div>
+    </nav>
   </header>
 
   <div role="main" class="container">
     <div class="row clear-navbar"></div>
 
     <div class="row">
-      <div class="span12">
+      <div class="col-md-12">
         <!--[if lt IE 7]>
         <p class="alert alert-error">Your browser is <em>ancient!</em>
           <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
@@ -142,7 +142,7 @@
     </div>
 
     <div class="row">
-      <div class="span3">
+      <div class="col-md-3">
         <form class="form-search" ng-submit="submitForm()">
           <% if (bestMatch) { %>
           <div class="dropdown search"
@@ -156,8 +156,10 @@
             </ul>
           </div>
           <% } else { %>
-          <input type="text" ng-model="search" placeholder="search the docs"
-                 tabindex="1" accesskey="s" class="search-query">
+          <div class="form-group">
+            <input type="text" class="form-control search-query" ng-model="search"
+                   placeholder="search the docs" tabindex="1" accesskey="s">
+          </div>
           <% } %>
           <div class="spacer"></div>
 
@@ -177,17 +179,17 @@
               <a href="{{page.url}}" tabindex="2">{{page.shortName}}</a>
             </li>
 
-            <li class="nav-header section" ng-show="module.directives.length">
-              <a class="guide">directive</a>
-            </li>
-            <li ng-repeat="page in module.directives track by page.url" ng-class="navClass(page)" class="api-list-item expand">
-              <a href="{{page.url}}" tabindex="2">{{page.shortName}}</a>
-            </li>
-
             <li class="nav-header section" ng-show="module.controllers.length">
               <a class="guide">controller</a>
             </li>
             <li ng-repeat="page in module.controllers track by page.url" ng-class="navClass(page)" class="api-list-item expand">
+              <a href="{{page.url}}" tabindex="2">{{page.shortName}}</a>
+            </li>
+
+            <li class="nav-header section" ng-show="module.directives.length">
+              <a class="guide">directive</a>
+            </li>
+            <li ng-repeat="page in module.directives track by page.url" ng-class="navClass(page)" class="api-list-item expand">
               <a href="{{page.url}}" tabindex="2">{{page.shortName}}</a>
             </li>
 
@@ -225,15 +227,14 @@
 
         </form>
       </div>
-      <div class="span9">
+      <div class="col-md-9">
 
-        <ul class="breadcrumb">
+        <ol class="breadcrumb">
           <li ng-repeat="crumb in breadcrumb">
-            <span ng-hide="crumb.url">{{crumb.name}}</span>
-            <a ng-show="crumb.url" href="{{crumb.url}}">{{crumb.name}}</a>
-            <span ng-show="crumb.url" class="divider">/</span>
+            <span ng-if="!crumb.url">{{crumb.name}}</span>
+            <a ng-if="crumb.url" href="{{crumb.url}}">{{crumb.name}}</a>
           </li>
-        </ul>
+        </ol>
 
         <div id="loading" ng-show="loading">Loading...</div>
 
